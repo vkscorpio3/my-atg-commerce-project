@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="{APP-NAME}" default="build.ear">
+
+<target name="build.war">
+
+ 	<war destfile="D:\Tuhin_ATG_Workspace\MyWalgreenProject/j2ee-apps/MyWalgreenProject.war" update="true" webxml="D:\Tuhin_ATG_Workspace\MyWalgreenProject/j2ee-apps/MyWalgreenProject/MyWalgreenProject.war/WEB-INF/web.xml">
+	<fileset dir="D:\Tuhin_ATG_Workspace\MyWalgreenProject/j2ee-apps/MyWalgreenProject/MyWalgreenProject.war">
+		<include name="**/*"/>
+		<exclude name="WEB-INF/web.xml"/>
+	</fileset>
+	</war>
+	<!--<place-holder-for-war-task/>-->
+ </target>
+
+<target name="build.ear" depends="build.war">
+  <ear destfile="D:\Tuhin_ATG_Workspace\MyWalgreenProject/j2ee-apps/MyWalgreenProject.ear" appxml="D:\Tuhin_ATG_Workspace\MyWalgreenProject/j2ee-apps/MyWalgreenProject/META-INF/application.xml">
+    <metainf dir="D:\Tuhin_ATG_Workspace\MyWalgreenProject/j2ee-apps/MyWalgreenProject/META-INF" includes="DYNAMO-INF/**/*"/>
+    <fileset dir="D:\Tuhin_ATG_Workspace\MyWalgreenProject/j2ee-apps" includes="*.war,*.jar"/>
+  </ear>
+</target>
+</project>
+<!-- @version $Id: //product/Eclipse/main/plugins/atg.project/templates/build.xml#1 $$Change: 425088 $ -->
