@@ -1,0 +1,34 @@
+<%@ taglib uri="/WEB-INF/tld/coreTaglib1_0.tld" prefix="core" %>
+<%-- 
+This page fragment generates a series of dsp:option tags, one for each
+state or Candian province we want to let the user select as part of an
+address. 
+--%>
+
+    <% atg.servlet.DynamoHttpServletRequest dynamoRequest =
+      atg.servlet.ServletUtil.getDynamoRequest(request); 
+    %>
+
+<%-- Generate an empty option tag for no selection --%>
+<dsp:option value=""/>
+
+<%-- Iterate over the list of known destinations and generate an option tag for each --%>
+
+<dsp:droplet name="/atg/dynamo/droplet/ForEach">
+  <dsp:param name="array" bean="/atg/commerce/util/StateList.places"/>
+  <dsp:param name="elementName" value="state"/>    
+  <dsp:oparam name="output">
+    <dsp:option value='<%=dynamoRequest.getParameter("state.code")%>'/>
+    <%=dynamoRequest.getParameter("state.displayName")%>
+  </dsp:oparam>
+</dsp:droplet>
+
+<%--
+<dsp:getvalueof id="stateList" idtype="atg.commerce.util.PlaceList" bean="/atg/commerce/util/StateList.places">
+<core:forEach id="stateId" values="<%=stateList%>"    	     
+  castClass="atg.commerce.util.PlaceList.Place" elementId="state">
+    <dsp:option value="<%=state.getCode()%>"/><%="state.getDisplayName()"%>
+</core:forEach>
+</dsp:getvalueof>
+--%>
+<%-- @version $Id: //product/DCS/version/9.0/release/PioneerCyclingJSP/j2ee-apps/pioneer/web-app/en/user/StatePicker.jspf#1 $$Change: 508164 $--%>

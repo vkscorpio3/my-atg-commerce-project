@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template
+	PUBLIC "-//Art Technology Group,Inc.//DTD General SQL Adapter //EN"
+	"http://www.atg.com/dtds/gsa/gsa_1.0.dtd">
+
+<gsa-template>
+<item-descriptor name="user_db" default="true">
+	<table name="WWW_USER_LOGIN" type="primary" id-column-names="USER_ID">
+		<property name="Login_ID" column-name="USER_ID" data-type="string"/>
+		<property name="Password" column-name="Password" data-type="string"/>
+	</table>
+	<table name="WWW_USER_Details" type="auxiliary" id-column-names="USER_ID">
+		<property name="UserName" column-name="USER_Name" data-type="string"/>
+		<property name="Email" column-name="Email" data-type="string"/>
+		<property name="Address" column-name="Address" data-type="string"/>
+		<property name="Gender" column-name="Sex" data-type="string"/>
+		<property name="DateOfBirth" column-name="DOB" data-type="string"/>
+	</table>
+</item-descriptor>
+</gsa-template>
